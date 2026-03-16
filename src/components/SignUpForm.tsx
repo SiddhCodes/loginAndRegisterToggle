@@ -8,6 +8,11 @@ interface SignUpFormProps {
 }
 
 export const SignUpForm: React.FC<SignUpFormProps> = ({onClick, state}) => {
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault()
+    }
+    
     return (
         <div className="mx-auto w-full max-w-sm border border-zinc-200 shadow-sm rounded-xl overflow-hidden bg-white">
             
@@ -18,7 +23,9 @@ export const SignUpForm: React.FC<SignUpFormProps> = ({onClick, state}) => {
                 </p>
             </div>
 
-            <form className="px-6 pb-4 grid gap-4">
+            <form
+            onSubmit={handleSubmit}
+            className="px-6 pb-4 grid gap-4">
                 <InputGroup label="Full Name" type="text" placeholder="Siddhant Mul" />
                 
                 <InputGroup label="Email" type="email" placeholder="siddhantmul18@gmail.com" />

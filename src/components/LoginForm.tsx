@@ -3,11 +3,16 @@ import { Button } from './Button'
 import { FormField } from './FormField'
 
 interface LoginFormProps {
-    state: boolean
-    onClick: (state: boolean)=> void
+    state: boolean;
+    onClick: (state: boolean)=> void;
 }
 
 export const LoginForm: React.FC<LoginFormProps> = ({onClick, state}) => {
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault()
+    }
+
     return (
         <div className='mx-auto w-full max-w-sm border border-zinc-200 shadow-sm rounded-xl overflow-hidden bg-white'>
 
@@ -16,7 +21,9 @@ export const LoginForm: React.FC<LoginFormProps> = ({onClick, state}) => {
                 <p className='text-zinc-500 text-sm'>Enter your email below to login to your account</p>
             </div>
 
-            <form className='p-6 pt-0 grid gap-4'>
+            <form
+            onSubmit={handleSubmit}
+            className='p-6 pt-0 grid gap-4'>
                 <FormField label="Email" type="email" />
                 
                 <FormField
